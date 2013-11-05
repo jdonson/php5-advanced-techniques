@@ -2,26 +2,14 @@
 <html lang="en">
 <head>
 <meta http-equiv="content-type" charset="iso-8859-1" />
-<!-- add responsive css and js resources; complete header and seo -->
-<title>Tasks Mgt App | Add Task</title>
+<!-- add responsive css and js resources -->
+<title>Tasks Mgt App | Sorting MD Arrays</title>
 </head>
 <body>
-Note that this Version 1 database model utilizes *single* table with parent_id key.<p/>
-Known as pigs-ear notation:  Tasks --< Steps, No Limit To Depth.<p/>
-<p/>
-<?php
-
-//  Depending upon what our data service will be,
-//  confirm platform, version, connectivity, privs.
-//  Then we will test for pre-existing schema and table.  Check against SHOW PRIVILEGES FOR current_user();
-//  dbms connected? && db_version && libs && service exists?:[database, table], else write access
-//  charsets and collations ok?  default table engine ok?
-//  security measures taken in Version 3
-//  connection management measures taken in Version 4
+<?php  //  use static variables to have values persist for functions
 
 require_once('functions/functions.php');
 include('includes/db.inc');
-include('includes/mdarray.inc');
 
 $db_connect_error_message = "Unable to connect to localhost database named test.";
 //  db connect
@@ -87,12 +75,6 @@ foreach ($tasks as $task) { echo "<li>{$task['task']}</li>\n"; }
 
 echo '</ul>';
 
-//  PROPOSED ENHANCEMENTS:
-//  -- $output      gathered
-//  -- user_id		int unsigned,  depends upon user table with role and group hierarchies similarly built-in would be great
-// We will extend this data model in Version 2: Groups --< Users --|<  Tasks --< Steps<p/>
-// We will further extend this data model in Version 3: netAuths cascades privs for roles<p/>
-// At first, we just need a modest web interface to start prototyping in....
 ?>
 </body>
 </html>
